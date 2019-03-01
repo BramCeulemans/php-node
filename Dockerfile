@@ -1,6 +1,6 @@
 FROM php:7.3
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - && \
+RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
     apt-get update -yqq && \
     apt-get install -yqq gnupg && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
