@@ -1,8 +1,9 @@
 FROM php:7.3
 
-RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
-    apt-get update -yqq && \
-    apt-get install -yqq gnupg && \
+RUN apt-get update -yqq && \
+    apt-get install -yqq gnupg apt-transport-https && \
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list && \
     curl -sL https://deb.nodesource.com/setup_10.x | bash - && \
     apt-get install -yqq git nodejs yarn unzip \
         libcurl4-gnutls-dev libicu-dev libmcrypt-dev \
